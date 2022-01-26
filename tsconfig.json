@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "None",
+        "target": "es5",
+        "sourceMap": false,
+        "allowJs": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "outFile": "out/build.js"
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "files": [
+        "node_modules/chart.js/dist/chart.min.js",
+        "src/script.ts"
+    ]
+}

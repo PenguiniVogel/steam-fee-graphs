@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fee Graph</title>
+
+    <style>
+        html {
+            font-family: -apple-system,
+                BlinkMacSystemFont,
+                Segoe UI,
+                Roboto,
+                Oxygen,
+                Ubuntu,
+                Cantarell,
+                Fira Sans,
+                Droid Sans,
+                Helvetica Neue,
+                sans-serif;
+        }
+
+        td.left {
+            vertical-align: top;
+        }
+
+        div.left > div {
+            margin-top: 5px;
+
+            display: grid;
+            grid-template-columns: 100px 150px;
+        }
+
+        .right {
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas style="max-width: 90%; max-height: 500px;" id="target"></canvas>
+    </div>
+    <table style="padding: 5px;">
+        <tbody>
+            <tr>
+                <td class="left">
+                    <div class="left">
+                        <div>
+                            <label for="buyer_price">Buyer Price:</label>
+                            <input id="buyer_price" type="number" onkeyup="script.update();" />
+                        </div>
+                        <div>
+                            <label for="seller_gain">Seller Gain:</label>
+                            <span id="seller_gain"></span>
+                        </div>
+                        <div>
+                            <label for="fees">Fees:</label>
+                            <span id="fees"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="right">
+                        <canvas id="visualizer"></canvas>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="out/build.js"></script>
+</body>
+</html>

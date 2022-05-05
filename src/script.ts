@@ -16,7 +16,7 @@ module script {
          * @param publisherFee
          */
         function getFees(receivedAmount: number, publisherFee: number): { steam_fee: number, publisher_fee: number, fees: number, amount: number } {
-            const {wallet_fee_base, wallet_fee_percent, wallet_fee_minimum} = {
+            const { wallet_fee_base, wallet_fee_percent, wallet_fee_minimum } = {
                 wallet_fee_base: 0,
                 wallet_fee_percent: 0.05,
                 wallet_fee_minimum: 1
@@ -69,6 +69,34 @@ module script {
 
         return fees;
     }
+
+    /**
+     * Calculate the steam buyer price <br>
+     * Stolen and slightly optimized from Steams' economy_common.js
+     *
+     * @param receivedAmount
+     * @param publisherFee
+     */
+    function calculateBuyerPrice(receivedAmount: number, publisherFee: number = 0.1): { steam_fee: number, publisher_fee: number, fees: number, amount: number } {
+        const { wallet_fee_base, wallet_fee_percent, wallet_fee_minimum } = {
+            wallet_fee_base: 0,
+            wallet_fee_percent: 0.05,
+            wallet_fee_minimum: 1
+        };
+
+        let nSteamFee = Math.floor(Math.max(receivedAmount * wallet_fee_percent, wallet_fee_minimum) + wallet_fee_base);
+        let nPublisherFee = Math.floor(publisherFee > 0 ? Math.max(receivedAmount * publisherFee, 1) : 0);
+        let nAmountToSend = receivedAmount + nSteamFee + nPublisherFee;
+
+        return {
+            steam_fee: nSteamFee,
+            publisher_fee: nPublisherFee,
+            fees: nSteamFee + nPublisherFee,
+            amount: nAmountToSend
+        };
+    }
+
+    /** graph stuff **/
 
     let valueSteps: number[] = [
         3, 4, 5, 6, 7, 8, 9, 10,
@@ -171,22 +199,37 @@ module script {
 
     let userChart: Chart;
     let input_buyer_price = <HTMLInputElement>document.querySelector('#buyer_price');
-    let span_seller_gain = <HTMLElement>document.querySelector('#seller_gain');
+    let input_seller_gain = <HTMLInputElement>document.querySelector('#seller_gain');
     let span_fees = <HTMLElement>document.querySelector('#fees');
 
-    export function update() {
-        let val = +input_buyer_price.value;
+    export function update(caller: 'buyer'|'seller') {
+        let val = 0;
+        if (caller == 'buyer') {
+            val = +input_buyer_price.value;
 
-        if (isNaN(val) || !isFinite(val)) return;
+            if (isNaN(val) || !isFinite(val)) return;
 
-        if (val < 0.03) val = 0.03;
+            if (val < 0.03) val = 0.03;
 
-        if (userChart) userChart.destroy();
+            if (userChart) userChart.destroy();
 
-        let calc = calculateSellerPrice(~~(val * 100));
+            let calc = calculateSellerPrice(~~(val * 100));
 
-        span_seller_gain.innerHTML = `${(calc.amount - calc.fees) / 100}`;
-        span_fees.innerHTML = `${calc.fees / 100} (${(~~((1 - ((calc.amount - calc.fees) / calc.amount)) * 10_000)) / 100}%)`;
+            input_seller_gain.value = `${(calc.amount - calc.fees) / 100}`;
+            span_fees.innerHTML = `${calc.fees / 100} (${(~~((1 - ((calc.amount - calc.fees) / calc.amount)) * 10_000)) / 100}%)`;
+        } else if (caller == 'seller') {
+            val = +input_seller_gain.value;
+
+            if (isNaN(val) || !isFinite(val)) return;
+
+            if (val < 0.01) val = 0.01;
+
+            if (userChart) userChart.destroy();
+
+            let calc = calculateBuyerPrice(~~(val * 100));
+            input_buyer_price.value = `${(calc.amount) / 100}`;
+            span_fees.innerHTML = `${calc.fees / 100} (${(~~((1 - ((calc.amount - calc.fees) / calc.amount)) * 10_000)) / 100}%)`;
+        }
 
         let steps = makeSteps([
             -100, -50, -10, -5, -3, -2, -1,

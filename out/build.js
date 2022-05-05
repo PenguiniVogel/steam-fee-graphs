@@ -161,10 +161,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
             enumerable: false,
             configurable: true
         });
-        F.prototype.rgbString = function () { return this._valid ? (t = this._rgb) && (t.a < 255 ? "rgba(" + t.r + ", " + t.g + ", " + t.b + ", " + x(t.a) + ")" : "rgb(" + t.r + ", " + t.g + ", " + t.b + ")") : this._rgb; var t; };
+        F.prototype.rgbString = function () { return this._valid ? (t = this._rgb) && (t.a < 255 ? "rgba(".concat(t.r, ", ").concat(t.g, ", ").concat(t.b, ", ").concat(x(t.a), ")") : "rgb(".concat(t.r, ", ").concat(t.g, ", ").concat(t.b, ")")) : this._rgb; var t; };
         F.prototype.hexString = function () { return this._valid ? u(this._rgb) : this._rgb; };
         F.prototype.hslString = function () { return this._valid ? function (t) { if (!t)
-            return; var e = k(t), i = e[0], s = b(e[1]), n = b(e[2]); return t.a < 255 ? "hsla(" + i + ", " + s + "%, " + n + "%, " + x(t.a) + ")" : "hsl(" + i + ", " + s + "%, " + n + "%)"; }(this._rgb) : this._rgb; };
+            return; var e = k(t), i = e[0], s = b(e[1]), n = b(e[2]); return t.a < 255 ? "hsla(".concat(i, ", ").concat(s, "%, ").concat(n, "%, ").concat(x(t.a), ")") : "hsl(".concat(i, ", ").concat(s, "%, ").concat(n, "%)"); }(this._rgb) : this._rgb; };
         F.prototype.mix = function (t, e) { var i = this; if (t) {
             var s_2 = i.rgb, n_1 = t.rgb;
             var o_1;
@@ -417,7 +417,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
         var t_5 = ye(n, "border", "width"), e_3 = ye(n, "padding");
         h -= e_3.width + t_5.width, c -= e_3.height + t_5.height;
     } return h = Math.max(0, h - o.width), c = Math.max(0, s ? Math.floor(h / s) : c - o.height), h = we(Math.min(h, a, l.maxWidth)), c = we(Math.min(c, r, l.maxHeight)), h && !c && (c = we(h / 2)), { width: h, height: c }; }
-    function ke(t, e, i) { var s = e || 1, n = Math.floor(t.height * s), o = Math.floor(t.width * s); t.height = n / s, t.width = o / s; var a = t.canvas; return a.style && (i || !a.style.height && !a.style.width) && (a.style.height = t.height + "px", a.style.width = t.width + "px"), (t.currentDevicePixelRatio !== s || a.height !== n || a.width !== o) && (t.currentDevicePixelRatio = s, a.height = n, a.width = o, t.ctx.setTransform(s, 0, 0, s, 0, 0), !0); }
+    function ke(t, e, i) { var s = e || 1, n = Math.floor(t.height * s), o = Math.floor(t.width * s); t.height = n / s, t.width = o / s; var a = t.canvas; return a.style && (i || !a.style.height && !a.style.width) && (a.style.height = "".concat(t.height, "px"), a.style.width = "".concat(t.width, "px")), (t.currentDevicePixelRatio !== s || a.height !== n || a.width !== o) && (t.currentDevicePixelRatio = s, a.height = n, a.width = o, t.ctx.setTransform(s, 0, 0, s, 0, 0), !0); }
     var Se = function () { var t = !1; try {
         var e_4 = { get passive() { return t = !0, !1; } };
         window.addEventListener("test", null, e_4), window.removeEventListener("test", null, e_4);
@@ -626,7 +626,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
                 if (a = r, r = l, l = _i(t, h_6 + 1), !r)
                     continue;
                 var n_8 = r[i], c_3 = r[s];
-                a && (o = (n_8 - a[i]) / 3, r["cp1" + i] = n_8 - o, r["cp1" + s] = c_3 - o * e[h_6]), l && (o = (l[i] - n_8) / 3, r["cp2" + i] = n_8 + o, r["cp2" + s] = c_3 + o * e[h_6]);
+                a && (o = (n_8 - a[i]) / 3, r["cp1".concat(i)] = n_8 - o, r["cp1".concat(s)] = c_3 - o * e[h_6]), l && (o = (l[i] - n_8) / 3, r["cp2".concat(i)] = n_8 + o, r["cp2".concat(s)] = c_3 + o * e[h_6]);
             }
         }(t, o, e);
     }
@@ -858,7 +858,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
         if (i && e_18 > 0 || !i && e_18 < 0)
             return n_12.index;
     } return null; }
-    function vs(t, e) { var i = t.chart, s = t._cachedMeta, n = i._stacks || (i._stacks = {}), o = s.iScale, a = s.vScale, r = s.index, l = o.axis, h = a.axis, c = function (t, e, i) { return t.id + "." + e.id + "." + (i.stack || i.type); }(o, a, s), d = e.length; var u; for (var t_27 = 0; t_27 < d; ++t_27) {
+    function vs(t, e) { var i = t.chart, s = t._cachedMeta, n = i._stacks || (i._stacks = {}), o = s.iScale, a = s.vScale, r = s.index, l = o.axis, h = a.axis, c = function (t, e, i) { return "".concat(t.id, ".").concat(e.id, ".").concat(i.stack || i.type); }(o, a, s), d = e.length; var u; for (var t_27 = 0; t_27 < d; ++t_27) {
         var i_19 = e[t_27], _b = i_19, _c = l, o_13 = _b[_c], _d = h, d_3 = _b[_d];
         u = (i_19._stacks || (i_19._stacks = {}))[h] = _s(n, c, o_13), u[r] = d_3, u._top = ys(u, a, !0, s.type), u._bottom = ys(u, a, !1, s.type);
     } }
@@ -960,10 +960,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
             var s = "active" === e, n = this._cachedDataOpts, o = t + "-" + e, a = n[o], r = this.enableOptionSharing && ct(i);
             if (a)
                 return Ss(a, r);
-            var l = this.chart.config, h = l.datasetElementScopeKeys(this._type, t), c = s ? [t + "Hover", "hover", t, ""] : [t, ""], d = l.getOptionScopes(this.getDataset(), h), u = Object.keys(bt.elements[t]), f = l.resolveNamedOptions(d, u, (function () { return _this.getContext(i, s); }), c);
+            var l = this.chart.config, h = l.datasetElementScopeKeys(this._type, t), c = s ? ["".concat(t, "Hover"), "hover", t, ""] : [t, ""], d = l.getOptionScopes(this.getDataset(), h), u = Object.keys(bt.elements[t]), f = l.resolveNamedOptions(d, u, (function () { return _this.getContext(i, s); }), c);
             return f.$shared && (f.$shared = r, n[o] = Object.freeze(Ss(f, r))), f;
         };
-        Ps.prototype._resolveAnimations = function (t, e, i) { var s = this.chart, n = this._cachedDataOpts, o = "animation-" + e, a = n[o]; if (a)
+        Ps.prototype._resolveAnimations = function (t, e, i) { var s = this.chart, n = this._cachedDataOpts, o = "animation-".concat(e), a = n[o]; if (a)
             return a; var r; if (!1 !== s.options.animation) {
             var s_15 = this.chart.config, n_14 = s_15.datasetAnimationScopeKeys(this._type, e), o_14 = s_15.getOptionScopes(this.getDataset(), n_14);
             r = s_15.createResolver(o_14, this.getContext(t, i, e));
@@ -1440,8 +1440,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     function $s(t, e) { var i = bt.datasets[t] || {}; return ((e.datasets || {})[t] || {}).indexAxis || e.indexAxis || i.indexAxis || "x"; }
     function Ys(t, e) { return "x" === t || "y" === t ? t : e.axis || ("top" === (i = e.position) || "bottom" === i ? "x" : "left" === i || "right" === i ? "y" : void 0) || t.charAt(0).toLowerCase(); var i; }
     function Us(t) { var e = t.options || (t.options = {}); e.plugins = K(e.plugins, {}), e.scales = function (t, e) { var i = gt[t.type] || { scales: {} }, s = e.scales || {}, n = $s(t.type, e), o = Object.create(null), a = Object.create(null); return Object.keys(s).forEach((function (t) { var e = s[t]; if (!U(e))
-        return console.error("Invalid scale configuration for scale: " + t); if (e._proxy)
-        return console.warn("Ignoring resolver passed as options for scale: " + t); var r = Ys(t, e), l = function (t, e) { return t === e ? "_index_" : "_value_"; }(r, n), h = i.scales || {}; o[r] = o[r] || t, a[t] = ot(Object.create(null), [{ axis: r }, e, h[r], h[l]]); })), t.data.datasets.forEach((function (i) { var n = i.type || t.type, r = i.indexAxis || $s(n, e), l = (gt[n] || {}).scales || {}; Object.keys(l).forEach((function (t) { var e = function (t, e) { var i = t; return "_index_" === t ? i = e : "_value_" === t && (i = "x" === e ? "y" : "x"), i; }(t, r), n = i[e + "AxisID"] || o[e] || e; a[n] = a[n] || Object.create(null), ot(a[n], [{ axis: e }, s[n], l[t]]); })); })), Object.keys(a).forEach((function (t) { var e = a[t]; ot(e, [bt.scales[e.type], bt.scale]); })), a; }(t, e); }
+        return console.error("Invalid scale configuration for scale: ".concat(t)); if (e._proxy)
+        return console.warn("Ignoring resolver passed as options for scale: ".concat(t)); var r = Ys(t, e), l = function (t, e) { return t === e ? "_index_" : "_value_"; }(r, n), h = i.scales || {}; o[r] = o[r] || t, a[t] = ot(Object.create(null), [{ axis: r }, e, h[r], h[l]]); })), t.data.datasets.forEach((function (i) { var n = i.type || t.type, r = i.indexAxis || $s(n, e), l = (gt[n] || {}).scales || {}; Object.keys(l).forEach((function (t) { var e = function (t, e) { var i = t; return "_index_" === t ? i = e : "_value_" === t && (i = "x" === e ? "y" : "x"), i; }(t, r), n = i[e + "AxisID"] || o[e] || e; a[n] = a[n] || Object.create(null), ot(a[n], [{ axis: e }, s[n], l[t]]); })); })), Object.keys(a).forEach((function (t) { var e = a[t]; ot(e, [bt.scales[e.type], bt.scale]); })), a; }(t, e); }
     function Xs(t) { return (t = t || {}).datasets = t.datasets || [], t.labels = t.labels || [], t; }
     var qs = new Map, Ks = new Set;
     function Gs(t, e) { var i = qs.get(t); return i || (i = e(), qs.set(t, i), Ks.add(i)), i; }
@@ -1480,10 +1480,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
         });
         Js.prototype.update = function () { var t = this._config; this.clearCache(), Us(t); };
         Js.prototype.clearCache = function () { this._scopeCache.clear(), this._resolverCache.clear(); };
-        Js.prototype.datasetScopeKeys = function (t) { return Gs(t, (function () { return [["datasets." + t, ""]]; })); };
-        Js.prototype.datasetAnimationScopeKeys = function (t, e) { return Gs(t + ".transition." + e, (function () { return [["datasets." + t + ".transitions." + e, "transitions." + e], ["datasets." + t, ""]]; })); };
-        Js.prototype.datasetElementScopeKeys = function (t, e) { return Gs(t + "-" + e, (function () { return [["datasets." + t + ".elements." + e, "datasets." + t, "elements." + e, ""]]; })); };
-        Js.prototype.pluginScopeKeys = function (t) { var e = t.id; return Gs(this.type + "-plugin-" + e, (function () { return [__spreadArray(["plugins." + e], t.additionalOptionScopes || [], true)]; })); };
+        Js.prototype.datasetScopeKeys = function (t) { return Gs(t, (function () { return [["datasets.".concat(t), ""]]; })); };
+        Js.prototype.datasetAnimationScopeKeys = function (t, e) { return Gs("".concat(t, ".transition.").concat(e), (function () { return [["datasets.".concat(t, ".transitions.").concat(e), "transitions.".concat(e)], ["datasets.".concat(t), ""]]; })); };
+        Js.prototype.datasetElementScopeKeys = function (t, e) { return Gs("".concat(t, "-").concat(e), (function () { return [["datasets.".concat(t, ".elements.").concat(e), "datasets.".concat(t), "elements.".concat(e), ""]]; })); };
+        Js.prototype.pluginScopeKeys = function (t) { var e = t.id; return Gs("".concat(this.type, "-plugin-").concat(e), (function () { return [__spreadArray(["plugins.".concat(e)], t.additionalOptionScopes || [], true)]; })); };
         Js.prototype._cachedScopes = function (t, e) { var i = this._scopeCache; var s = i.get(t); return s && !e || (s = new Map, i.set(t, s)), s; };
         Js.prototype.getOptionScopes = function (t, e, i) { var _b = this, s = _b.options, n = _b.type, o = this._cachedScopes(t, i), a = o.get(e); if (a)
             return a; var r = new Set; e.forEach((function (e) { t && (r.add(t), e.forEach((function (e) { return Zs(r, t, e); }))), e.forEach((function (t) { return Zs(r, s, t); })), e.forEach((function (t) { return Zs(r, gt[n] || {}, t); })), e.forEach((function (t) { return Zs(r, bt, t); })), e.forEach((function (t) { return Zs(r, pt, t); })); })); var l = Array.from(r); return 0 === l.length && l.push(Object.create(null)), Ks.has(e) && o.set(e, l), l; };
@@ -2213,7 +2213,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
                     }
                 } return m; }(l, c, d, s);
                 break;
-            default: throw new Error("Unsupported decimation algorithm '" + i.algorithm + "'");
+            default: throw new Error("Unsupported decimation algorithm '".concat(i.algorithm, "'"));
         } e._decimated = u; })); }, destroy: function (t) { ao(t); } };
     function lo(t, e, i) { var s = function (t) { var e = t.options, i = e.fill; var s = K(i && i.target, i); return void 0 === s && (s = !!e.backgroundColor), !1 !== s && null !== s && (!0 === s ? "origin" : s); }(t); if (U(s))
         return !isNaN(s.value) && s; var n = parseFloat(s); return X(n) && Math.floor(n) === n ? ("-" !== s[0] && "+" !== s[0] || (n = e + n), !(n === e || n < 0 || n >= i) && n) : ["origin", "start", "end", "stack", "shape"].indexOf(s) >= 0 && s; }
@@ -2624,7 +2624,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
             var e_86 = 1;
             (n >= Number.MAX_SAFE_INTEGER || s <= Number.MIN_SAFE_INTEGER) && (e_86 = Math.abs(.05 * n)), a(n + e_86), t || o(s - e_86);
         } this.min = s, this.max = n; };
-        Go.prototype.getTickLimit = function () { var t = this.options.ticks; var e, i = t.maxTicksLimit, s = t.stepSize; return s ? (e = Math.ceil(this.max / s) - Math.floor(this.min / s) + 1, e > 1e3 && (console.warn("scales." + this.id + ".ticks.stepSize: " + s + " would result generating up to " + e + " ticks. Limiting to 1000."), e = 1e3)) : (e = this.computeTickLimit(), i = i || 11), i && (e = Math.min(i, e)), e; };
+        Go.prototype.getTickLimit = function () { var t = this.options.ticks; var e, i = t.maxTicksLimit, s = t.stepSize; return s ? (e = Math.ceil(this.max / s) - Math.floor(this.min / s) + 1, e > 1e3 && (console.warn("scales.".concat(this.id, ".ticks.stepSize: ").concat(s, " would result generating up to ").concat(e, " ticks. Limiting to 1000.")), e = 1e3)) : (e = this.computeTickLimit(), i = i || 11), i && (e = Math.min(i, e)), e; };
         Go.prototype.computeTickLimit = function () { return Number.POSITIVE_INFINITY; };
         Go.prototype.buildTicks = function () { var t = this.options, e = t.ticks; var i = this.getTickLimit(); i = Math.max(2, i); var s = function (t, e) { var i = [], s = t.bounds, n = t.step, o = t.min, a = t.max, r = t.precision, l = t.count, h = t.maxTicks, c = t.maxDigits, d = t.includeBounds, u = n || 1, f = h - 1, g = e.min, p = e.max, m = !$(o), x = !$(a), b = !$(l), _ = (p - g) / (c + 1); var y, v, w, M, k = Ot((p - g) / f / u) * u; if (k < 1e-14 && !m && !x)
             return [{ value: g }, { value: p }]; M = Math.ceil(p / k) - Math.floor(g / k), M > f && (k = Ot(M * k / f / u) * u), $(r) || (y = Math.pow(10, r), k = Math.ceil(k * y) / y), "ticks" === s ? (v = Math.floor(g / k) * k, w = Math.ceil(p / k) * k) : (v = g, w = p), m && x && n && Rt((a - o) / n, k / 1e3) ? (M = Math.round(Math.min((a - o) / k, h)), k = (a - o) / M, v = o, w = a) : b ? (v = m ? o : v, w = x ? a : w, M = l - 1, k = (w - v) / M) : (M = (w - v) / k, M = Lt(M, Math.round(M), k / 1e3) ? Math.round(M) : Math.ceil(M)); var S = Math.max(Ft(k), Ft(v)); y = Math.pow(10, $(r) ? S : r), v = Math.round(v * y) / y, w = Math.round(w * y) / y; var P = 0; for (m && (d && v !== o ? (i.push({ value: o }), v < o && P++, Lt(Math.round((v + P * k) * y) / y, o, Ko(o, _, t)) && P++) : v < o && P++); P < M; ++P)
@@ -2932,6 +2932,31 @@ var script;
         }
         return fees;
     }
+    /**
+     * Calculate the steam buyer price <br>
+     * Stolen and slightly optimized from Steams' economy_common.js
+     *
+     * @param receivedAmount
+     * @param publisherFee
+     */
+    function calculateBuyerPrice(receivedAmount, publisherFee) {
+        if (publisherFee === void 0) { publisherFee = 0.1; }
+        var _a = {
+            wallet_fee_base: 0,
+            wallet_fee_percent: 0.05,
+            wallet_fee_minimum: 1
+        }, wallet_fee_base = _a.wallet_fee_base, wallet_fee_percent = _a.wallet_fee_percent, wallet_fee_minimum = _a.wallet_fee_minimum;
+        var nSteamFee = Math.floor(Math.max(receivedAmount * wallet_fee_percent, wallet_fee_minimum) + wallet_fee_base);
+        var nPublisherFee = Math.floor(publisherFee > 0 ? Math.max(receivedAmount * publisherFee, 1) : 0);
+        var nAmountToSend = receivedAmount + nSteamFee + nPublisherFee;
+        return {
+            steam_fee: nSteamFee,
+            publisher_fee: nPublisherFee,
+            fees: nSteamFee + nPublisherFee,
+            amount: nAmountToSend
+        };
+    }
+    /** graph stuff **/
     var valueSteps = [
         3, 4, 5, 6, 7, 8, 9, 10,
         20, 30, 40, 50, 60, 70, 80, 90, 100,
@@ -3008,19 +3033,34 @@ var script;
     createChart(context_target, target_steps);
     var userChart;
     var input_buyer_price = document.querySelector('#buyer_price');
-    var span_seller_gain = document.querySelector('#seller_gain');
+    var input_seller_gain = document.querySelector('#seller_gain');
     var span_fees = document.querySelector('#fees');
-    function update() {
-        var val = +input_buyer_price.value;
-        if (isNaN(val) || !isFinite(val))
-            return;
-        if (val < 0.03)
-            val = 0.03;
-        if (userChart)
-            userChart.destroy();
-        var calc = calculateSellerPrice(~~(val * 100));
-        span_seller_gain.innerHTML = "" + (calc.amount - calc.fees) / 100;
-        span_fees.innerHTML = calc.fees / 100 + " (" + (~~((1 - ((calc.amount - calc.fees) / calc.amount)) * 10000)) / 100 + "%)";
+    function update(caller) {
+        var val = 0;
+        if (caller == 'buyer') {
+            val = +input_buyer_price.value;
+            if (isNaN(val) || !isFinite(val))
+                return;
+            if (val < 0.03)
+                val = 0.03;
+            if (userChart)
+                userChart.destroy();
+            var calc = calculateSellerPrice(~~(val * 100));
+            input_seller_gain.value = "".concat((calc.amount - calc.fees) / 100);
+            span_fees.innerHTML = "".concat(calc.fees / 100, " (").concat((~~((1 - ((calc.amount - calc.fees) / calc.amount)) * 10000)) / 100, "%)");
+        }
+        else if (caller == 'seller') {
+            val = +input_seller_gain.value;
+            if (isNaN(val) || !isFinite(val))
+                return;
+            if (val < 0.01)
+                val = 0.01;
+            if (userChart)
+                userChart.destroy();
+            var calc = calculateBuyerPrice(~~(val * 100));
+            input_buyer_price.value = "".concat((calc.amount) / 100);
+            span_fees.innerHTML = "".concat(calc.fees / 100, " (").concat((~~((1 - ((calc.amount - calc.fees) / calc.amount)) * 10000)) / 100, "%)");
+        }
         var steps = makeSteps([
             -100, -50, -10, -5, -3, -2, -1,
             1, 2, 3, 5, 10, 50, 100
